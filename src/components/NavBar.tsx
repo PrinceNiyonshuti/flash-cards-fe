@@ -55,7 +55,13 @@ function NavBar() {
 							</Link>
 						</div>
 						<div className="hidden sm:block sm:ml-6">
-							<div className="flex space-x-4"></div>
+							<div className="flex space-x-4">
+								<Link
+									to="/AddQuestion"
+									className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+									Add Question
+								</Link>
+							</div>
 						</div>
 					</div>
 					{/* clicked */}
@@ -82,9 +88,9 @@ function NavBar() {
 									aria-labelledby="user-menu-button">
 									<Link
 										onClick={showMenu}
-										to="/AddCard"
+										to="/AddQuestion"
 										className="block px-4 py-1 text-sm text-gray-700">
-										Add Card
+										Add Question
 									</Link>
 									<Link
 										to="/Dashboard"

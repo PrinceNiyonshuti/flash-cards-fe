@@ -4,19 +4,25 @@
       "id": 1,
       "question": "What is 1 +2 ",
       "answer": "3",
-      "status": true
+      "status": false
     },
     {
       "id": 2,
       "question": "What is 2 +2 ",
       "answer": "4",
-      "status": false
+      "status": true
     },
     {
       "id": 3,
       "question": "What is 2 +3 ",
       "answer": "5",
-      "status": true
+      "status": false
+    },
+    {
+      "question": "How to start a computer",
+      "answer": "Press power button",
+      "status": false,
+      "id": 4
     }
   ]
 }

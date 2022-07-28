@@ -8,66 +8,31 @@ import { AuthContext } from "../context/AuthContext";
 const AddMovie = () => {
 	const { currentUser } = useContext(AuthContext);
 	// Form variables
-	const movieTitle = useRef<HTMLInputElement>(null);
-	const movieGenre = useRef<HTMLSelectElement>(null);
-	const movieYear = useRef<HTMLInputElement>(null);
-	const movieDescr = useRef<HTMLTextAreaElement>(null);
+	const cardQuestion = useRef<HTMLInputElement>(null);
+	const cardAnswer = useRef<HTMLInputElement>(null);
 	const movieForm = useRef<HTMLFormElement>(null);
 
-	// image upload
-	// const types = ["image/jpg", "image/jpeg", "image/png", "image/PNG"];
-	// const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	const cover = e.target.files;
-	// 	if (cover) {
-	// 		if (cover && types.includes(cover[0].type)) {
-	// 			setPoster(cover[0]);
-	// 			console.log(cover[0].type);
-	// 			console.log(cover[0].name);
-	// 		} else {
-	// 			Swal.fire({
-	// 				title: "Invalid Image Type",
-	// 				text: "Valid Image Types [png , jpeg , jpg ]",
-	// 				icon: "error",
-	// 				timer: 2000,
-	// 				showConfirmButton: false,
-	// 			});
-	// 		}
-	// 	}
-	// };
-
-	// Save Movie
+	// Save Question
 	const newMovie = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const title = movieTitle.current?.value;
-		const genre = movieGenre.current?.value;
-		const year = movieYear.current?.value;
-		const description = movieDescr.current?.value;
-		const publisher = currentUser.email;
-		const votes = 0;
-		const favorite = false;
-		const watch = false;
-		const cover = `https://source.unsplash.com/1600x900/?movie,` + title;
+		const question = cardQuestion.current?.value;
+		const answer = cardAnswer.current?.value;
+		const status = false;
 
-		const movie = {
-			cover,
-			title,
-			genre,
-			year,
-			description,
-			publisher,
-			votes,
-			favorite,
-			watch,
+		const questionData = {
+			question,
+			answer,
+			status,
 		};
 
-		fetch("http://localhost:8000/movieList", {
+		fetch("http://localhost:8000/questions", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(movie),
+			body: JSON.stringify(questionData),
 		}).then(() => {
 			Swal.fire({
-				title: "Movie Successfully Created",
-				text: `${title} Saved`,
+				title: "Question Successfully Created",
+				text: `${question} Saved`,
 				icon: "success",
 				confirmButtonText: "Done",
 			}).then(function () {
@@ -84,7 +49,7 @@ const AddMovie = () => {
 					<div className="w-full">
 						<div className="flex justify-center">
 							<h3 className="text-2xl font-bold text-center">
-								New Card Details
+								New Question Details
 							</h3>
 						</div>
 						<form onSubmit={newMovie} ref={movieForm}>
@@ -92,7 +57,7 @@ const AddMovie = () => {
 								<label className="block font-medium ">Question Title</label>
 								<input
 									type="text"
-									ref={movieTitle}
+									ref={cardQuestion}
 									className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
 									placeholder="Question title"
 									required
@@ -104,14 +69,14 @@ const AddMovie = () => {
 								</label>
 								<input
 									type="text"
-									ref={movieTitle}
+									ref={cardAnswer}
 									className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
 									placeholder="Question Answer"
 									required
 								/>
 							</div>
 							<button className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-								Add Card
+								AddQuestion
 							</button>
 						</form>
 					</div>
