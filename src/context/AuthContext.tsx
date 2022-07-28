@@ -3,7 +3,6 @@
 import { createContext, useEffect, useState } from "react";
 import { AuthContextState, IQuestion} from "./Types";
 import { auth } from "../firebase";
-import Swal from "sweetalert2";
 
 const contextDefaultValue: AuthContextState = {
 	currentUser: "",
@@ -12,8 +11,7 @@ const contextDefaultValue: AuthContextState = {
 	logout: () => {},
 	getFilteredCards: () => {},
 	questionData: [],
-	handleNext: () => {},
-	handlePrevious: () => {},
+	markDone: () => {},
 };
 
 export const AuthContext = createContext(contextDefaultValue);
@@ -52,7 +50,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 
 	// Retrieve all Cards
 	const getQuestions = () => {
-		fetch(`http://localhost:8000/questions?_sort=id&_order=ASC`)
+		fetch(`http://localhost:8000/questions?status=false&_sort=id&_order=ASC`)
 			.then((res) => {
 				return res.json();
 			})
@@ -78,8 +76,8 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 	};
 
 	// Handle Next Question
-	const handleNext = (questionId: number, cardStat: boolean) => {
-		let status = false;
+	const markDone = (questionId: number, cardStat: boolean) => {
+		let status = true;
 		if (cardStat) {
 			status = false;
 		} else {
@@ -94,42 +92,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 			body: JSON.stringify(stat),
 		}).then(() => {
 			//action done
-			Swal.fire({
-				title: "Next Question",
-				icon: "success",
-				timer: 2000,
-				showConfirmButton: false,
-			}).then(function () {
-				getQuestions();
-			});
-		});
-	};
-
-	// Handle Previous Question
-	const handlePrevious = (questionId: number, cardStat: boolean) => {
-		let status = false;
-		if (cardStat) {
-			status = false;
-		} else {
-			status = true;
-		}
-		const stat = { status };
-		fetch(`http://localhost:8000/questions/` + questionId, {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(stat),
-		}).then(() => {
-			//action done
-			Swal.fire({
-				title: "Previous Question",
-				icon: "success",
-				timer: 2000,
-				showConfirmButton: false,
-			}).then(function () {
-				getQuestions();
-			});
+			getQuestions();
 		});
 	};
 
@@ -144,8 +107,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		login,
 		logout,
 		getFilteredCards,
-		handleNext,
-		handlePrevious,
+		markDone,
 	};
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -23,6 +23,18 @@
       "answer": "Press power button",
       "status": false,
       "id": 4
+    },
+    {
+      "question": "What is an orange",
+      "answer": "Fruit",
+      "status": true,
+      "id": 5
+    },
+    {
+      "question": "What is URL",
+      "answer": "It is a link",
+      "status": false,
+      "id": 6
     }
   ]
 }

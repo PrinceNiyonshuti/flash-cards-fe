@@ -37,7 +37,11 @@ function Dashboard() {
 						</div>
 					</div>
 					<div>
-						<Cards question={questionData} />
+						{questionData.length > 0 ? (
+							<Cards question={questionData} />
+						) : (
+							"No Cards"
+						)}
 					</div>
 				</div>
 			</div>

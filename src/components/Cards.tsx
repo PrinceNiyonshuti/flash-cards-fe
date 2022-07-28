@@ -6,36 +6,79 @@ import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
 
 function Cards(props: IQuestion) {
-	const { handleNext, handlePrevious } = useContext(AuthContext);
+	const { markDone } = useContext(AuthContext);
 	const cards = props.question.length;
 
 	const [index, setIndex] = useState<number>(0);
+	const [showResults, setShowResults] = React.useState(false);
 
 	function goToNext(questionId: number, cardStat: boolean) {
 		setIndex((index + 1) % cards);
-		handleNext(questionId, cardStat);
+		setShowResults(false);
 	}
 
 	function goToPrevious(questionId: number, cardStat: boolean) {
 		setIndex((index - 1) % cards);
-		handlePrevious(questionId, cardStat);
+		setShowResults(false);
 	}
 
 	return (
 		<div className="flex flex-wrap -mx-2 ">
-			<div className="w-full mx-auto my-auto p-4">
+			<div className="w-full mx-auto my-auto p-4 text-center">
 				<div className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-					<div className="p-4">
+					<div className="p-4 text-center">
 						<span className="inline-block px-2 py-1 leading-none bg-blue-300 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-							Card {props.question[index].status}
+							Question {index + 1}
 						</span>
-						<h2 className="mt-2 mb-2 text-xl font-bold">
+						<h1 className="mt-2 mb-2 text-3xl font-bold">
 							{props.question[index].question}
-						</h2>
+						</h1>
 					</div>
-					<div className="p-1 border-t border-b text-xs text-gray-700">
-						<div className="button-container flex justify-between mb-2">
-							<div className="pr-4 flex items-center text-sm text-gray-600"></div>
+					<div className=" p-1 border-t border-b text-xs text-gray-700">
+						<div className="button-container flex mb-2 w-full mx-auto my-auto p-4 text-center">
+							{showResults ? (
+								<div className="pr-4 flex items-center text-sm text-gray-600">
+									<p className="text-xl t">
+										The answer is : {props.question[index].answer}
+									</p>
+								</div>
+							) : (
+								<div className="flex justify-between w-full">
+									<div>
+										<button
+											onClick={() => setShowResults(true)}
+											className="group flex items-center rounded-md py-2 border border-gray-300 hover:border-blue-700 p-2 hover:no-underline select-none transition-color duration-100 ease-in pr-4"
+											id="previous"
+											data-behavior="previous">
+											<i className="ri-arrow-left-s-line text-gray-700 text-2xl leading-none group-hover:text-blue-700 transition-color duration-100 ease-in"></i>
+											<div className="flex flex-col ml-1">
+												<div className="text-gray-700 leading-tight text-base md:text-lg font-medium group-hover:text-blue-700 transition-color duration-100 ease-in">
+													Show the Answer
+												</div>
+											</div>
+										</button>
+									</div>
+									<div>
+										<button
+											onClick={() =>
+												markDone(
+													props.question[index].id,
+													props.question[index].status
+												)
+											}
+											className="group flex items-center rounded-md py-2 border border-gray-300 hover:border-blue-700 p-2 hover:no-underline select-none transition-color duration-100 ease-in pr-4"
+											id="previous"
+											data-behavior="previous">
+											<i className="ri-arrow-left-s-line text-gray-700 text-2xl leading-none group-hover:text-blue-700 transition-color duration-100 ease-in"></i>
+											<div className="flex flex-col ml-1">
+												<div className="text-gray-700 leading-tight text-base md:text-lg font-medium group-hover:text-blue-700 transition-color duration-100 ease-in">
+													Marks As Done
+												</div>
+											</div>
+										</button>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>

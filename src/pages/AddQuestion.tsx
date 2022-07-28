@@ -1,12 +1,10 @@
 /** @format */
 
-import { useContext, useRef } from "react";
+import {useRef } from "react";
 import Swal from "sweetalert2";
 import NavBar from "../components/NavBar";
-import { AuthContext } from "../context/AuthContext";
 
 const AddMovie = () => {
-	const { currentUser } = useContext(AuthContext);
 	// Form variables
 	const cardQuestion = useRef<HTMLInputElement>(null);
 	const cardAnswer = useRef<HTMLInputElement>(null);

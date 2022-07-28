@@ -37,6 +37,5 @@ export type AuthContextState = {
 	login: (email: string, password: string) => void;
 	logout: () => void;
 	getFilteredCards: (e: any) => void;
-	handleNext: (questionId: number, cardStat: boolean) => void;
-	handlePrevious: (questionId: number, cardStat: boolean) => void;
+	markDone: (questionId: number, cardStat: boolean) => void;
 };
