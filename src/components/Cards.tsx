@@ -10,16 +10,13 @@ function Cards(props: IQuestion) {
 	const cards = props.question.length;
 
 	const [index, setIndex] = useState<number>(0);
-	const [showResults, setShowResults] = React.useState(false);
 
 	function goToNext(questionId: number, cardStat: boolean) {
 		setIndex((index + 1) % cards);
-		setShowResults(false);
 	}
 
 	function goToPrevious(questionId: number, cardStat: boolean) {
 		setIndex((index - 1) % cards);
-		setShowResults(false);
 	}
 
 	return (
