@@ -4,7 +4,7 @@
       "id": 1,
       "question": "What is 1 +2 ",
       "answer": "3",
-      "status": false
+      "status": true
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "id": 3,
       "question": "What is 2 +3 ",
       "answer": "5",
-      "status": false
+      "status": true
     },
     {
       "question": "How to start a computer",

@@ -42,6 +42,28 @@ function Dashboard() {
 						) : (
 							"No Cards"
 						)}
+						{/* <div className="flip">
+							<div className="flip-content">
+								<div className="flip-front">
+									<div className="flex flex-wrap -mx-2 ">
+										<div className="w-full mx-auto my-auto p-4 text-center">
+											<div className="c-card block  hover:shadow-xl rounded-lg overflow-hidden">
+												<div className="p-4 text-center">
+													<span className="inline-block px-2 py-1 leading-none bg-blue-300 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
+														Question 1
+													</span>
+													<h1 className="mt-2 mb-2 text-3xl font-bold">Question</h1>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="flip-back">
+									<strong>BILL MURRAY</strong>
+								</div>
+							</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
