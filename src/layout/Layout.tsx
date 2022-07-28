@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import AddMovie from "../pages/AddMovie";
+import AddQuestion from "../pages/AddQuestion";
 import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Register from "../pages/Register"
@@ -25,8 +25,8 @@ function Layout() {
 					element={<PrivateRoutes component={Dashboard} />}
 				/>
 				<Route
-					path="/AddCard"
-					element={<PrivateRoutes component={AddMovie} />}
+					path="/AddQuestion"
+					element={<PrivateRoutes component={AddQuestion} />}
 				/>
 			</Routes>
 		</div>
