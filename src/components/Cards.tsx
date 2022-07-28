@@ -15,7 +15,7 @@ function Cards(props: IQuestion) {
 		setIndex((index + 1) % cards);
 	}
 
-	function goToPrevious(questionId: number, cardStat: boolean) {
+	function goToPrevious() {
 		setIndex((index - 1) % cards);
 	}
 
@@ -77,10 +77,7 @@ function Cards(props: IQuestion) {
 						<div className="w-1/2 pr-5 flex">
 							<button
 								onClick={() =>
-									goToPrevious(
-										props.question[index].id,
-										props.question[index].status
-									)
+									goToPrevious()
 								}
 								className="group flex items-center rounded-md py-2 border border-gray-300 hover:border-blue-700 p-2 hover:no-underline select-none transition-color duration-100 ease-in pr-4"
 								id="previous"
