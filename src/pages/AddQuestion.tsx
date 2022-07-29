@@ -8,10 +8,10 @@ const AddMovie = () => {
 	// Form variables
 	const cardQuestion = useRef<HTMLInputElement>(null);
 	const cardAnswer = useRef<HTMLInputElement>(null);
-	const movieForm = useRef<HTMLFormElement>(null);
+	const questionForm = useRef<HTMLFormElement>(null);
 
 	// Save Question
-	const newMovie = (e: React.FormEvent<HTMLFormElement>) => {
+	const newQuestion = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const question = cardQuestion.current?.value;
 		const answer = cardAnswer.current?.value;
@@ -50,7 +50,7 @@ const AddMovie = () => {
 								New Question Details
 							</h3>
 						</div>
-						<form onSubmit={newMovie} ref={movieForm}>
+						<form onSubmit={newQuestion} ref={questionForm}>
 							<div>
 								<label className="block font-medium ">Question Title</label>
 								<input
@@ -74,7 +74,7 @@ const AddMovie = () => {
 								/>
 							</div>
 							<button className="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
-								AddQuestion
+								Add Question
 							</button>
 						</form>
 					</div>
