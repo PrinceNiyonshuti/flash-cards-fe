@@ -61,6 +61,11 @@ function NavBar() {
 									className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
 									Add Question
 								</Link>
+								<Link
+									to="/QuestionList"
+									className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+									Questions List
+								</Link>
 							</div>
 						</div>
 					</div>
