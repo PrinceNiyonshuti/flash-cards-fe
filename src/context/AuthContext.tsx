@@ -119,7 +119,6 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 			confirmButtonText: "Yes",
 			denyButtonText: `No`,
 		}).then((result) => {
-			/* Read more about isConfirmed, isDenied below */
 			if (result.isConfirmed) {
 				fetch(`http://localhost:8000/questions/` + questionId, {
 					method: "DELETE",
