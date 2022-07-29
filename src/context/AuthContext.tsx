@@ -13,6 +13,7 @@ const contextDefaultValue: AuthContextState = {
 	questionData: [],
 	allQuestions: [],
 	markDone: () => {},
+	deleteQuestion: () => {},
 };
 
 export const AuthContext = createContext(contextDefaultValue);
@@ -109,6 +110,11 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		});
 	};
 
+	// Delete Question
+	const deleteQuestion = (questionId: number) => {
+		
+	};
+
 	useEffect(() => {
 		getQuestions();
 		getAllQuestions();
@@ -123,6 +129,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		logout,
 		getFilteredCards,
 		markDone,
+		deleteQuestion,
 	};
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
