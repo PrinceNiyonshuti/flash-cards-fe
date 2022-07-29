@@ -112,7 +112,12 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 
 	// Delete Question
 	const deleteQuestion = (questionId: number) => {
-		
+		fetch(`http://localhost:8000/questions/` + questionId, {
+			method: "DELETE",
+		}).then(() => {
+			//action done
+			getAllQuestions();
+		});
 	};
 
 	useEffect(() => {
