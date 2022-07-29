@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/AuthContext";
 
 function QuestionList() {
-	const { allQuestions } = useContext(AuthContext);
+	const { allQuestions, deleteQuestion } = useContext(AuthContext);
 	return (
 		<div className="h-screen bg-gray-100">
 			<NavBar />
@@ -71,6 +71,7 @@ function QuestionList() {
 												</div>
 												<div className="pr-4 flex items-center text-sm text-gray-600">
 													<button
+														onClick={() => deleteQuestion(question.id)}
 														type="button"
 														className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
 														Delete
