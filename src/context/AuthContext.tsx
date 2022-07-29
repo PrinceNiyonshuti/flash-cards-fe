@@ -1,8 +1,9 @@
 /** @format */
 
 import { createContext, useEffect, useState } from "react";
-import { AuthContextState, IQuestion} from "./Types";
+import { AuthContextState, IQuestion } from "./Types";
 import { auth } from "../firebase";
+import Swal from "sweetalert2";
 
 const contextDefaultValue: AuthContextState = {
 	currentUser: "",
@@ -13,6 +14,7 @@ const contextDefaultValue: AuthContextState = {
 	questionData: [],
 	allQuestions: [],
 	markDone: () => {},
+	deleteQuestion: () => {},
 };
 
 export const AuthContext = createContext(contextDefaultValue);
@@ -109,6 +111,27 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		});
 	};
 
+	// Delete Question
+	const deleteQuestion = (questionId: number) => {
+		Swal.fire({
+			title: "Do you want to delete question",
+			showDenyButton: true,
+			confirmButtonText: "Yes",
+			denyButtonText: `No`,
+		}).then((result) => {
+			/* Read more about isConfirmed, isDenied below */
+			if (result.isConfirmed) {
+				fetch(`http://localhost:8000/questions/` + questionId, {
+					method: "DELETE",
+				}).then(() => {
+					//action done
+					getAllQuestions();
+				});
+			} else if (result.isDenied) {
+			}
+		});
+	};
+
 	useEffect(() => {
 		getQuestions();
 		getAllQuestions();
@@ -123,6 +146,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		logout,
 		getFilteredCards,
 		markDone,
+		deleteQuestion,
 	};
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
