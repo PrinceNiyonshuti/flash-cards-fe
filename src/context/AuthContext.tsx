@@ -11,6 +11,7 @@ const contextDefaultValue: AuthContextState = {
 	logout: () => {},
 	getFilteredCards: () => {},
 	questionData: [],
+	allQuestions: [],
 	markDone: () => {},
 };
 
@@ -24,6 +25,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 	// state data
 	const [currentUser, setCurrentUser] = useState<any | null>();
 	const [questionData, setQuestionData] = useState<IQuestion["question"]>([]);
+	const [allQuestions, setAllQuestions] = useState<IQuestion["question"]>([]);
 
 	// Create Account
 	const register = async (email: string, password: string) => {
@@ -48,7 +50,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 		return unsubscribe;
 	}, []);
 
-	// Retrieve all Cards
+	// Retrieve uncompleted questions
 	const getQuestions = () => {
 		fetch(`http://localhost:8000/questions?status=false&_sort=id&_order=ASC`)
 			.then((res) => {
@@ -56,6 +58,17 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 			})
 			.then((data) => {
 				setQuestionData(data);
+			});
+	};
+
+	// Retrieve all questions
+	const getAllQuestions = () => {
+		fetch(`http://localhost:8000/questions?_sort=id&_order=ASC`)
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				setAllQuestions(data);
 			});
 	};
 
@@ -98,11 +111,13 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 
 	useEffect(() => {
 		getQuestions();
+		getAllQuestions();
 	}, []);
 
 	const value = {
 		currentUser,
 		questionData,
+		allQuestions,
 		register,
 		login,
 		logout,

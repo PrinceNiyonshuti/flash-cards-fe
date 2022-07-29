@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/AuthContext";
 
 function QuestionList() {
-	const { questionData } = useContext(AuthContext);
+	const { allQuestions } = useContext(AuthContext);
 	return (
 		<div className="h-screen bg-gray-100">
 			<NavBar />
@@ -39,7 +39,7 @@ function QuestionList() {
 								</tr>
 							</thead>
 							<tbody>
-								{questionData.map((question) => (
+								{allQuestions.map((question) => (
 									<tr
 										className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
 										key={question.id}>
@@ -51,12 +51,12 @@ function QuestionList() {
 										<td className="py-4 px-6">{question.answer}</td>
 										<td className="py-4 px-6">
 											{question.status ? (
-												<span className="inline-block px-2 py-1 leading-none bg-blue-700 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-													Done
+												<span className="inline-block px-2 py-1 leading-none bg-green-700 text-white rounded-full font-semibold uppercase tracking-wide text-xs">
+													Completed
 												</span>
 											) : (
-												<span className="inline-block px-2 py-1 leading-none bg-gray-900 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">
-													Not Yet
+												<span className="inline-block px-2 py-1 leading-none bg-yellow-500 text-white rounded-full font-semibold uppercase tracking-wide text-xs">
+													Pending
 												</span>
 											)}
 										</td>

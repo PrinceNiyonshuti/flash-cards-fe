@@ -33,6 +33,7 @@ export type TQuestion = {
 export type AuthContextState = {
 	currentUser: any | null;
 	questionData: IQuestion["question"];
+	allQuestions: IQuestion["question"];
 	register: (email: string, password: string) => void;
 	login: (email: string, password: string) => void;
 	logout: () => void;
