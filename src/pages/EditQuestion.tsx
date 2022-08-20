@@ -1,10 +1,23 @@
-import React from 'react'
-import { useRef } from "react";
+/** @format */
+
+import React from "react";
+import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
-import NavBar from '../components/NavBar';
+import NavBar from "../components/NavBar";
+import { TQuestion } from "../context/Types";
 function EditQuestion() {
+    const [details, setDetails] = useState<TQuestion>();
 	const { id } = useParams();
+
+	fetch(`http://localhost:8000/questions/` + id)
+		.then((res) => {
+			return res.json();
+		})
+		.then((data) => {
+            setDetails(data);
+        });
+    
 	// Form variables
 	const cardQuestion = useRef<HTMLInputElement>(null);
 	const cardAnswer = useRef<HTMLInputElement>(null);
@@ -56,7 +69,7 @@ function EditQuestion() {
 									type="text"
 									ref={cardQuestion}
 									className="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-									placeholder="Question title"
+                                    placeholder="Question title"
 									required
 								/>
 							</div>
@@ -83,4 +96,4 @@ function EditQuestion() {
 	);
 }
 
-export default EditQuestion
+export default EditQuestion;
