@@ -5,3 +5,4 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 ## Requirements
 -   [Node.js](https://nodejs.org/en/)
 -   [React](https://reactjs.org/)
+-   [Json Server](https://www.json-server.com/)
