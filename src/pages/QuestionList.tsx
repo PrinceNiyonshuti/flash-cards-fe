@@ -1,5 +1,6 @@
 /** @format */
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/AuthContext";
 
@@ -63,11 +64,11 @@ function QuestionList() {
 										<td className="py-4 px-6">
 											<div className="button-container flex justify-between mb-2">
 												<div className="p-2 flex items-center text-sm text-gray-600">
-													<button
-														type="button"
-														className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-														Edit
-													</button>
+													<Link to={`/Update/${question.id}`}>
+														<h2 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+															Edit
+														</h2>
+													</Link>
 												</div>
 												<div className="pr-4 flex items-center text-sm text-gray-600">
 													<button

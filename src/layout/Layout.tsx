@@ -9,6 +9,7 @@ import Register from "../pages/Register"
 import { AuthContext } from "../context/AuthContext";
 import PrivateRoutes from "../PrivateRoutes";
 import QuestionList from "../pages/QuestionList";
+import EditQuestion from "../pages/EditQuestion";
 
 function Layout() {
 	// Context data Authentication Data
@@ -32,6 +33,10 @@ function Layout() {
 				<Route
 					path="/QuestionList"
 					element={<PrivateRoutes component={QuestionList} />}
+				/>
+				<Route
+					path="/Update/:id"
+					element={<PrivateRoutes component={EditQuestion} />}
 				/>
 			</Routes>
 		</div>
