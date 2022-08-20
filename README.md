@@ -10,5 +10,11 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 ## Installation
 
 ```bash
-npm install
+    npm install
+```
+
+## Usage
+
+```bash
+    npm run prince
 ```
