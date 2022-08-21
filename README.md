@@ -15,6 +15,7 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 
 ```js
 REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
 ```
 
 ## Installation
