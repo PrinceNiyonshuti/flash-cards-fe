@@ -3,6 +3,11 @@
 
 ![image](https://user-images.githubusercontent.com/46887030/185991058-cec5ba62-cca4-4a4e-9bb6-8118bcbe56eb.png)
 
+[Dashboard]()
+
+![image](https://user-images.githubusercontent.com/46887030/185991998-9949bc5d-3d8e-4287-8bf2-f4ebaf281e03.png)
+
+
 Flash Cards application that helps to memorize and do quiz in a funny way and interesting one
 
 [Deployed App](https://flash-card-fe.netlify.app/) 
