@@ -13,6 +13,7 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 -   Firebase
 
 ## Technologies
+-   Typescript
 ### Firebase Configuration
 
 ```js
