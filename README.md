@@ -12,6 +12,7 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 -   [Json Server](https://www.json-server.com/)
 -   Firebase
 
+## Technologies
 ### Firebase Configuration
 
 ```js
