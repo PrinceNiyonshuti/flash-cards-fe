@@ -15,6 +15,7 @@ Flash Cards application that helps to memorize and do quiz in a funny way and in
 ## Technologies
 -   Typescript
 -   React (with hooks ,Context API)
+-   Firebase
 ### Firebase Configuration
 
 ```js
